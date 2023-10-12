@@ -5,8 +5,8 @@ import 'package:wander_animation/gen/assets.gen.dart';
 import 'package:wander_animation/models/trip_data.dart';
 import 'package:wander_animation/widgets/trip_data_card.dart';
 
-class TripDetailsPage2 extends StatelessWidget {
-  TripDetailsPage2({super.key});
+class TripDetailsPageViewItem extends StatelessWidget {
+  TripDetailsPageViewItem({super.key});
 
   final tripData = [
     const TripData(

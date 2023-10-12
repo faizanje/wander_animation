@@ -4,7 +4,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wander_animation/gen/assets.gen.dart';
 import 'package:wander_animation/widgets/trip_data_card.dart';
-import 'package:wander_animation/widgets/trip_details_page_2.dart';
+import 'package:wander_animation/widgets/trip_details_pageview_item.dart';
 
 import '../models/trip_data.dart';
 
@@ -93,8 +93,8 @@ class _TripDetailsBodyState extends State<TripDetailsBody> with SingleTickerProv
                     scrollDirection: Axis.vertical,
                     controller: _pageController,
                     children: [
-                      buildPage1(),
-                      buildPage2(),
+                      const SizedBox.shrink(),
+                      TripDetailsPageViewItem(),
                     ],
                   )
                 ],
@@ -228,14 +228,6 @@ class _TripDetailsBodyState extends State<TripDetailsBody> with SingleTickerProv
           )
           .toList(),
     );
-  }
-
-  Widget buildPage1() {
-    return const SizedBox.shrink();
-  }
-
-  Widget buildPage2() {
-    return TripDetailsPage2();
   }
 
   Positioned _buildBackground() {
