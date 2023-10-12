@@ -2,15 +2,7 @@
 
 A flutter app to implement transition animations
 
-## Getting Started
+## Inspiration
 
-This project is a starting point for a Flutter application.
+![plot](./screenshots/f250df8a04b3310e8f97b58cb83c83da.gif)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
