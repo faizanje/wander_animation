@@ -38,10 +38,13 @@ class _TripDetailsBodyState extends State<TripDetailsBody> with SingleTickerProv
       duration: const Duration(milliseconds: 100),
     );
 
-    _animationController.addStatusListener((status) {
+    _animationController.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
         // _animationController.reverse();
+        // await Future.delayed(Duration(milliseconds: 100));
+        // if (context.mounted) {
         Navigator.pop(context);
+        // }
       }
     });
     _pageController = PageController();
@@ -168,7 +171,7 @@ class _TripDetailsBodyState extends State<TripDetailsBody> with SingleTickerProv
                   ),
                   const SizedBox(height: 16),
                   FractionallySizedBox(
-                    widthFactor: 0.8,
+                    widthFactor: 0.7,
                     child: Hero(
                       tag: 'title',
                       child: Text(
@@ -183,48 +186,47 @@ class _TripDetailsBodyState extends State<TripDetailsBody> with SingleTickerProv
                 ],
               ),
               const SizedBox(height: 16),
-              Theme(
-                data: ThemeData.dark().copyWith(textTheme: GoogleFonts.montserratTextTheme()),
-                child: Wrap(
-                  children: [
-                    (name: 'Anne', imagePath: Assets.images.ellipse36.path),
-                    (name: 'Mike', imagePath: Assets.images.ellipse39.path),
-                    (name: 'Sophia', imagePath: Assets.images.ellipse37.path),
-                  ]
-                      .map(
-                        (e) => Container(
-                          margin: const EdgeInsets.only(right: 4),
-                          child: Hero(
-                            tag: e.imagePath,
-                            child: Material(
-                              color: Colors.transparent,
-                              child: Chip(
-                                backgroundColor: Color.lerp(Colors.white, Colors.grey[800], 1 - height),
-                                shape: StadiumBorder(
-                                  side: BorderSide(
-                                      color:
-                                          Color.lerp(Colors.transparent, Colors.black26, height) ?? Colors.transparent),
-                                ),
-                                label: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                                  child: Text(
-                                    e.name,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Color.lerp(Colors.white, Colors.black, height),
+              Wrap(
+                children: [
+                  (name: 'Anne', imagePath: Assets.images.ellipse36.path),
+                  (name: 'Mike', imagePath: Assets.images.ellipse39.path),
+                  (name: 'Sophia', imagePath: Assets.images.ellipse37.path),
+                ]
+                    .map(
+                      (e) => Container(
+                        margin: const EdgeInsets.only(right: 4),
+                        child: Hero(
+                          tag: e.imagePath,
+                          child: Material(
+                            type: MaterialType.transparency,
+                            child: Chip(
+                              backgroundColor: Color.lerp(Colors.white, Colors.grey[800], 1 - height),
+                              shape: const StadiumBorder(
+                                side: BorderSide(
+                                    // color: Color.lerp(Colors.red, Colors.black26, height) ?? Colors.transparent,
                                     ),
+                              ),
+                              side: BorderSide(
+                                  color: Color.lerp(Colors.transparent, Colors.black26, height) ?? Colors.transparent),
+                              label: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                                child: Text(
+                                  e.name,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: Color.lerp(Colors.white, Colors.black, height),
                                   ),
                                 ),
-                                avatar: CircleAvatar(
-                                  backgroundImage: AssetImage(e.imagePath),
-                                ),
+                              ),
+                              avatar: CircleAvatar(
+                                backgroundImage: AssetImage(e.imagePath),
                               ),
                             ),
                           ),
                         ),
-                      )
-                      .toList(),
-                ),
+                      ),
+                    )
+                    .toList(),
               ),
               const SizedBox(height: 48),
             ],

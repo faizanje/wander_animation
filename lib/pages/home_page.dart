@@ -1,7 +1,3 @@
-import 'dart:ffi';
-
-import 'package:animations/animations.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wander_animation/gen/assets.gen.dart';
 import 'package:wander_animation/widgets/stacked_row.dart';
@@ -64,15 +60,26 @@ class HomeBody extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
+                      // MaterialPageRoute(
+                      //   builder: (context) => const TripDetailsBody(),
+                      // )
                       PageRouteBuilder(
-                        pageBuilder: (context, animation, secondaryAnimation) {
+                        transitionDuration: const Duration(milliseconds: 500),
+                        reverseTransitionDuration: const Duration(milliseconds: 500),
+                        pageBuilder:
+                            (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
                           return const TripDetailsPage();
                         },
+                        transitionsBuilder: (BuildContext context, Animation<double> animation,
+                            Animation<double> secondaryAnimation, Widget child) {
+                          return Align(
+                            child: FadeTransition(
+                              opacity: animation,
+                              child: child,
+                            ),
+                          );
+                        },
                         opaque: false,
-                        transitionDuration: const Duration(milliseconds: 500),
-                        // transitionDuration: const Duration(milliseconds: 1500),
-                        reverseTransitionDuration: const Duration(milliseconds: 500),
-                        // reverseTransitionDuration: const Duration(milliseconds: 1500),
                       ),
                     );
                   },
@@ -114,26 +121,26 @@ class HomeBody extends StatelessWidget {
                 mainAxisExtent: 220,
               ),
               shrinkWrap: true,
-              children: [
-                const HomeTripCard(
+              children: const [
+                HomeTripCard(
                   imagePath:
                       'https://images.pexels.com/photos/2377432/pexels-photo-2377432.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
                   date: 'Mar 7-21',
                   title: 'Road trips over Italian Riviera',
                 ),
-                const HomeTripCard(
+                HomeTripCard(
                   imagePath:
                       'https://images.pexels.com/photos/1615807/pexels-photo-1615807.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
                   date: 'Jan 7-23',
                   title: 'Weekend in Lisbon',
                 ),
-                const HomeTripCard(
+                HomeTripCard(
                   imagePath:
                       'https://images.pexels.com/photos/1559908/pexels-photo-1559908.jpeg?auto=compress&cs=tinysrgb&w=600',
                   date: 'Mar 7-21',
                   title: 'Road trips over Italian Riviera',
                 ),
-                const HomeTripCard(
+                HomeTripCard(
                   imagePath:
                       'https://images.pexels.com/photos/1550348/pexels-photo-1550348.jpeg?auto=compress&cs=tinysrgb&w=600',
                   date: 'Mar 7-21',
