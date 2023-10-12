@@ -1,6 +1,6 @@
 # wander_animation
 
-A flutter app to to implement transition animations
+A flutter app to implement transition animations
 
 ## Getting Started
 
